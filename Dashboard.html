@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Builder OS Dashboard</title>
+<style>
+body, html { margin: 0; font-family: 'Arial', sans-serif; background: #0f172a; color: #fff; scroll-behavior: smooth; }
+a { text-decoration: none; color: #22c55e; }
+.container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+nav { position: fixed; top: 0; left: 0; width: 100%; background: #111827; padding: 15px 40px; display: flex; justify-content: space-between; align-items: center; z-index: 1000; }
+nav .logo img { height: 40px; }
+nav .nav-links a { margin-left: 25px; font-size: 16px; color: white; transition: color 0.3s; }
+nav .nav-links a:hover { color: #22c55e; }
+.dashboard { padding-top: 100px; text-align: center; }
+.dashboard h1 { font-size: 48px; margin-bottom: 20px; }
+.dashboard p { font-size: 20px; margin-bottom: 40px; }
+.table-container { background: #1e293b; padding: 20px; border-radius: 12px; max-width: 900px; margin: 0 auto; }
+table { width: 100%; border-collapse: collapse; color: #fff; }
+th, td { padding: 12px; border-bottom: 1px solid #374151; text-align: left; }
+th { background: #111827; }
+tr:hover { background: #111827; transform: translateX(0); }
+.button { display: inline-block; padding: 10px 20px; margin: 5px; font-size: 16px; background: #22c55e; border-radius: 6px; cursor: pointer; transition: background 0.3s, transform 0.2s; }
+.button:hover { background: #16a34a; transform: translateY(-2px); }
+#addItemForm { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; }
+#addItemForm input, #addItemForm select { padding: 10px; border-radius: 6px; border: none; }
+@media(max-width: 700px) { #addItemForm input, #addItemForm select { width: 100%; } nav { flex-direction: column; } nav .nav-links { margin-top: 10px; } }
+</style>
+</head>
+<body>
+
+<nav>
+    <div class="logo"><img src="assets/logo.png" alt="Builder OS Logo"></div>
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="download.html">Download</a>
+        <a href="docs.html">Docs</a>
+    </div>
+</nav>
+
+<section class="dashboard">
+<div class="container">
+    <h1>Interactive Dashboard</h1>
+    <p>Add tasks or captured links and see them appear instantly.</p>
+
+    <form id="addItemForm">
+        <input type="text" id="itemTitle" placeholder="Task / Link Title" required>
+        <select id="itemType">
+            <option value="task">Task</option>
+            <option value="link">Link</option>
+        </select>
+        <button class="button" type="submit">Add Item</button>
+    </form>
+
+    <div class="table-container">
+        <table id="itemsTable">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Type</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+</div>
+</section>
+
+<script>
+const form = document.getElementById('addItemForm');
+const tableBody = document.querySelector('#itemsTable tbody');
+let items = JSON.parse(localStorage.getItem('builderOS_items') || '[]');
+renderTable();
+form.addEventListener('submit', e => {
+    e.preventDefault();
+    const title = document.getElementById('itemTitle').value.trim();
+    const type = document.getElementById('itemType').value;
+    if(title) {
+        items.push({ title, type });
+        localStorage.setItem('builderOS_items', JSON.stringify(items));
+        renderTable();
+        form.reset();
+    }
+});
+function renderTable() {
+    tableBody.innerHTML = '';
+    items.forEach((item, index) => {
+        const row = document.createElement('tr');
+        row.innerHTML = `<td>${item.title}</td><td>${item.type}</td><td><button class="button" onclick="deleteItem(${index})">Delete</button></td>`;
+        tableBody.appendChild(row);
+    });
+}
+function deleteItem(index) {
+    items.splice(index, 1);
+    localStorage.setItem('builderOS_items', JSON.stringify(items));
+    renderTable();
+}
+</script>
+
+</body>
+</html>
