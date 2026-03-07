@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Builder OS</title>
+<style>
+* { box-sizing: border-box; margin:0; padding:0; }
+body, html { font-family: 'Arial', sans-serif; scroll-behavior: smooth; background: #0f172a; color: #fff; }
+a { text-decoration: none; }
+.button { display: inline-block; padding: 14px 28px; margin: 10px; font-size: 18px; background: #22c55e; color: white; border-radius: 8px; transition: background 0.3s, transform 0.3s; }
+.button:hover { background: #16a34a; transform: translateY(-3px); }
+.container { max-width: 1200px; margin: 0 auto; padding: 20px; text-align: center; }
+nav { position: fixed; width: 100%; top: 0; left: 0; background: #111827; display: flex; justify-content: space-between; align-items: center; padding: 15px 40px; z-index: 1000; box-shadow: 0 2px 6px rgba(0,0,0,0.3); }
+nav .logo img { height: 50px; }
+nav .nav-links a { margin-left: 25px; color: white; font-size: 16px; transition: color 0.3s; }
+nav .nav-links a:hover { color: #22c55e; }
+.hero { padding: 160px 20px 120px; text-align: center; animation: fadeIn 1s ease-in; }
+.hero h1 { font-size: 60px; margin-bottom: 20px; }
+.hero p { font-size: 22px; margin-bottom: 40px; }
+.features { background: #1e293b; padding: 80px 20px; text-align: center; }
+.features h2 { font-size: 36px; margin-bottom: 40px; }
+.feature-cards { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
+.feature-card { background: #111827; border-radius: 12px; padding: 30px; width: 280px; transition: transform 0.3s, box-shadow 0.3s; }
+.feature-card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.4); }
+.feature-card svg { width: 60px; height: 60px; margin-bottom: 20px; }
+.feature-card h3 { font-size: 22px; margin-bottom: 10px; }
+.get-started { background: #111827; padding: 80px 20px; text-align: center; }
+.get-started h2 { font-size: 36px; margin-bottom: 20px; }
+.get-started p { font-size: 20px; margin-bottom: 30px; }
+.testimonials { background: #1e293b; padding: 80px 20px; text-align: center; }
+.testimonials h2 { font-size: 36px; margin-bottom: 40px; }
+.testimonial-card { background: #111827; border-radius: 12px; padding: 30px; margin: 20px auto; max-width: 400px; font-style: italic; box-shadow: 0 4px 10px rgba(0,0,0,0.3); transition: transform 0.3s, box-shadow 0.3s; }
+.testimonial-card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.4); }
+.testimonial-card p { margin-bottom: 10px; }
+.testimonial-card span { font-weight: bold; }
+.screenshots { background: #111827; padding: 80px 20px; }
+.screenshots h2 { font-size: 36px; margin-bottom: 40px; }
+.screenshots img { max-width: 90%; border-radius: 12px; margin-bottom: 30px; }
+footer { background: #111827; padding: 40px 20px; font-size: 16px; color: #ccc; text-align: center; }
+footer a { color: #22c55e; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+@media (max-width: 900px) { .feature-cards { flex-direction: column; align-items: center; } nav { flex-direction: column; padding: 15px; } nav .nav-links { margin-top: 10px; } .hero h1 { font-size: 48px; } .hero p { font-size: 18px; } }
+</style>
+</head>
+<body>
+
+<nav>
+    <div class="logo"><img src="assets/logo.png" alt="Builder OS Logo"></div>
+    <div class="nav-links">
+        <a href="#hero">Home</a>
+        <a href="#features">Features</a>
+        <a href="#get-started">Get Started</a>
+        <a href="#screenshots">Screenshots</a>
+        <a href="download.html">Download</a>
+        <a href="docs.html">Docs</a>
+        <a href="dashboard.html">Dashboard</a>
+    </div>
+</nav>
+
+<section id="hero" class="hero">
+<div class="container">
+    <h1>Builder OS</h1>
+    <p>The ultimate automation platform with Chrome extension integration.</p>
+    <a class="button" href="download.html">Download Extension</a>
+    <a class="button" href="docs.html">Documentation</a>
+    <a class="button" href="dashboard.html">Dashboard</a>
+</div>
+</section>
+
+<section id="features" class="features">
+<div class="container">
+    <h2>Why Builder OS?</h2>
+    <div class="feature-cards">
+        <div class="feature-card">
+            <svg fill="#22c55e" viewBox="0 0 64 64"><circle cx="32" cy="32" r="30"/></svg>
+            <h3>Automation Tools</h3>
+            <p>Capture, organize, and automate your workflows effortlessly.</p>
+        </div>
+        <div class="feature-card">
+            <svg fill="#22c55e" viewBox="0 0 64 64"><rect x="8" y="8" width="48" height="48" rx="8"/></svg>
+            <h3>Chrome Extension</h3>
+            <p>Seamlessly integrate with your browser to save time and effort.</p>
+        </div>
+        <div class="feature-card">
+            <svg fill="#22c55e" viewBox="0 0 64 64"><polygon points="32,4 60,60 4,60"/></svg>
+            <h3>Web Dashboard</h3>
+            <p>View all your captured links, tasks, and automation data in one place.</p>
+        </div>
+    </div>
+</div>
+</section>
+
+<section id="get-started" class="get-started">
+<div class="container">
+    <h2>Get Started Today</h2>
+    <p>Start automating your workflow in minutes with Builder OS.</p>
+    <a class="button" href="download.html">Download Now</a>
+    <a class="button" href="docs.html">Learn More</a>
+</div>
+</section>
+
+<section id="screenshots" class="screenshots">
+<div class="container">
+    <h2>See Builder OS in Action</h2>
+    <img src="assets/screenshot1.png" alt="Builder OS Screenshot 1">
+    <img src="assets/screenshot2.png" alt="Builder OS Screenshot 2">
+</div>
+</section>
+
+<section class="testimonials">
+<div class="container">
+    <h2>What Our Users Say</h2>
+    <div class="testimonial-card">
+        <p>"Builder OS transformed the way I organize my tasks — it’s incredibly efficient!"</p>
+        <span>- Alex R.</span>
+    </div>
+    <div class="testimonial-card">
+        <p>"The Chrome extension makes capturing links and automating workflows so simple."</p>
+        <span>- Mia L.</span>
+    </div>
+</div>
+</section>
+
+<footer>
+<div class="container">
+    <p>© 2026 Builder OS. All rights reserved. | <a href="docs.html">Documentation</a></p>
+</div>
+</footer>
+
+</body>
+</html>
