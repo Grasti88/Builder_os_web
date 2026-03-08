@@ -5,308 +5,113 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Builder OS</title>
 <style>
-body{margin:0;font-family:Arial,sans-serif;background:#f5f7fb;color:#333;}
-.navbar{background:#1f2d44;color:white;padding:15px 30px;font-weight:bold;}
-.navbar a{color:white;margin-left:20px;text-decoration:none;}
-.hero{padding:100px 30px;text-align:center;background:#4f8df7;color:white;}
-.hero h1{font-size:48px;margin-bottom:20px;}
-.hero p{font-size:20px;margin-bottom:30px;}
-.hero a{background:white;color:#4f8df7;padding:12px 24px;border-radius:6px;text-decoration:none;font-weight:bold;}
-.features{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:25px;padding:50px 30px;}
-.card{background:white;padding:25px;border-radius:12px;box-shadow:0 8px 20px rgba(0,0,0,0.05);}
-.card h3{margin-top:0;color:#1f2d44;}
-</style>
-</head>
-<body>
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#f5f7fb;
+  color:#333;
+}
 
-<div class="navbar">
-Builder OS
-<a href="dashboard.html">Dashboard</a>
-<a href="download.html">Download</a>
-<a href="docs.html">Docs</a>
-</div>
+/* Navbar */
+.navbar{
+  background:#1f2d44;
+  color:white;
+  padding:15px 30px;
+  font-weight:bold;
+  display:flex;
+  align-items:center;
+}
+.navbar a{
+  color:white;
+  margin-left:20px;
+  text-decoration:none;
+}
+.navbar a:hover{
+  text-decoration:underline;
+}
 
-<div class="hero">
-<h1>Welcome to Builder OS</h1>
-<p>Build, automate, and manage your projects all in one place.</p>
-<a href="dashboard.html">Open Dashboard</a>
-</div>
-
-<div class="features">
-<div class="card">
-<h3>Automation Manager</h3>
-<p>Create and manage automated workflows easily.</p>
-</div>
-<div class="card">
-<h3>Project Dashboard</h3>
-<p>Track all your Builder OS projects in one place.</p>
-</div>
-<div class="card">
-<h3>Extensions</h3>
-<p>Install powerful tools to extend Builder OS functionality.</p>
-</div>
-<div class="card">
-<h3>AI Assistant</h3>
-<p>Get help and speed up your workflow using AI tools.</p>
-</div>
-</div>
-
-</body>
-</html>}
-
+/* Hero section */
+.hero{
+  padding:100px 30px;
+  text-align:center;
+  background:#4f8df7;
+  color:white;
+}
 .hero h1{
-font-size:42px;
-margin-bottom:10px;
+  font-size:48px;
+  margin-bottom:20px;
 }
-
 .hero p{
-font-size:18px;
-opacity:.9;
-margin-bottom:30px;
+  font-size:20px;
+  margin-bottom:30px;
+}
+.hero a{
+  background:white;
+  color:#4f8df7;
+  padding:12px 24px;
+  border-radius:6px;
+  text-decoration:none;
+  font-weight:bold;
+}
+.hero a:hover{
+  background:#e0e0e0;
 }
 
-.btn{
-padding:14px 26px;
-border-radius:8px;
-text-decoration:none;
-margin:10px;
-display:inline-block;
-font-weight:600;
-}
-
-.primary{
-background:#4f8df7;
-color:white;
-}
-
-.secondary{
-background:#3c6ed9;
-color:white;
-}
-
+/* Features */
 .features{
-max-width:1100px;
-margin:auto;
-padding:60px 20px;
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:40px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:25px;
+  padding:50px 30px;
 }
-
 .card{
-background:white;
-padding:30px;
-border-radius:10px;
-box-shadow:0 5px 15px rgba(0,0,0,0.05);
+  background:white;
+  padding:25px;
+  border-radius:12px;
+  box-shadow:0 8px 20px rgba(0,0,0,0.05);
 }
-
 .card h3{
-margin-top:0;
+  margin-top:0;
+  color:#1f2d44;
 }
-
-.card p{
-opacity:.8;
-}
-
-.card a{
-display:inline-block;
-margin-top:15px;
-color:#4f8df7;
-text-decoration:none;
-font-weight:600;
-}
-
-footer{
-text-align:center;
-padding:30px;
-font-size:14px;
-opacity:.6;
-}
-
 </style>
 </head>
-
 <body>
 
+<!-- Navbar -->
+<div class="navbar">
+  Builder OS
+  <a href="dashboard.html">Dashboard</a>
+  <a href="download.html">Download</a>
+  <a href="docs.html">Docs</a>
+</div>
+
+<!-- Hero -->
 <div class="hero">
-
-<h1>Welcome to Builder OS</h1>
-
-<p>Streamline your workflow with powerful Builder OS tools.</p>
-
-<a class="btn primary" href="dashboard.html">
-Go to Dashboard
-</a>
-
-<a class="btn secondary" href="download.html">
-Download Now
-</a>
-
-</div>
-
-<nav>
-<a href="index.html">Home</a>
-<a href="dashboard.html">Dashboard</a>
-<a href="download.html">Download</a>
-<a href="docs.html">Docs</a>
-</nav>
-
-<section class="features">
-
-<div class="card">
-<h3>Automation</h3>
-<p>Automate tasks and workflows with ease.</p>
-<a href="#">Learn More</a>
-</div>
-
-<div class="card">
-<h3>Dashboard</h3>
-<p>Monitor all your projects from one place.</p>
-<a href="#">View Dashboard</a>
-</div>
-
-<div class="card">
-<h3>Extensions</h3>
-<p>Enhance functionality with additional tools.</p>
-<a href="#">Browse Extensions</a>
-</div>
-
-</section>
-
-<footer>
-Builder OS © 2026
-</footer>
-
-</body>
-</html>}
-
-.features{
-max-width:1100px;
-margin:auto;
-padding:60px 20px;
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:40px;
-}
-
-.card{
-background:white;
-padding:30px;
-border-radius:10px;
-box-shadow:0 5px 15px rgba(0,0,0,0.05);
-}
-
-.card h3{
-margin-top:10px;
-}
-
-.card p{
-opacity:.8;
-}
-
-.card a{
-display:inline-block;
-margin-top:15px;
-color:#4f8df7;
-text-decoration:none;
-font-weight:600;
-}
-
-footer{
-text-align:center;
-padding:30px;
-font-size:14px;
-opacity:.6;
-}
-
-</style>
-</head>
-
-<body>    <div class="feature-card">
-      <img src="assets/dashboard.png" alt="Dashboard">
-      <h3>Dashboard</h3>
-      <p>Monitor all your projects from one place.</p>
-      <button>View Dashboard</button>
-    </div>
-    <div class="feature-card">
-      <img src="assets/extension.png" alt="Extension">
-      <h3>Extensions</h3>
-      <p>Enhance functionality with additional tools.</p>
-      <button>Explore</button>
-    </div>
-  </section>
-</main>
-
-</body>
-</html>}
-
-.feature-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 12px rgba(0,0,0,0.2);
-}
-
-.feature-card img {
-  max-width: 100%;
-  height: auto;
-  margin-bottom: 15px;
-}
-</style>
-</head>
-<body>
-
-<header class="hero">
-  <img src="assets/logo.png" alt="Builder OS Logo" style="max-width:150px; margin-bottom:20px;">
   <h1>Welcome to Builder OS</h1>
-  <p>Streamline your workflow with Builder OS tools</p>
-  <div>
-    <a href="dashboard.html"><button>Go to Dashboard</button></a>
-    <a href="download.html"><button>Download Now</button></a>
+  <p>Build, automate, and manage your projects all in one place.</p>
+  <a href="dashboard.html">Open Dashboard</a>
+</div>
+
+<!-- Features -->
+<div class="features">
+  <div class="card">
+    <h3>Automation Manager</h3>
+    <p>Create and manage automated workflows easily.</p>
   </div>
-</header>
+  <div class="card">
+    <h3>Project Dashboard</h3>
+    <p>Track all your Builder OS projects in one place.</p>
+  </div>
+  <div class="card">
+    <h3>Extensions</h3>
+    <p>Install powerful tools to extend Builder OS functionality.</p>
+  </div>
+  <div class="card">
+    <h3>AI Assistant</h3>
+    <p>Get help and speed up your workflow using AI tools.</p>
+  </div>
+</div>
 
-<nav style="text-align:center; margin:20px 0;">
-  <a href="index.html">Home</a> |
-  <a href="dashboard.html">Dashboard</a> |
-  <a href="download.html">Download</a> |
-  <a href="docs/docpage.html">Docs</a>
-</nav>
-
-<main>
-  <section class="features">
-    <div class="feature-card">
-      <img src="assets/automation.png" alt="Automation">
-      <h3>Automation</h3>
-      <p>Automate tasks and workflows with ease.</p>
-      <button>Learn More</button>
-    </div>
-    <div class="feature-card">
-      <img src="assets/dashboard.png" alt="Dashboard">
-      <h3>Dashboard</h3>
-      <p>Monitor all your projects from one place.</p>
-      <button>View Dashboard</button>
-    </div>
-    <div class="feature-card">
-      <img src="assets/extension.png" alt="Extension">
-      <h3>Extensions</h3>
-      <p>Enhance functionality with additional tools.</p>
-      <button>Explore</button>
-    </div>
-  </section>
-</main>
 </body>
 </html>
-<div class="hero">
-
-<h1>Welcome to Builder OS</h1>
-
-<p>Streamline your workflow with powerful Builder OS tools.</p>
-
-<a class="btn primary" href="dashboard.html">
-Go to Dashboard
-</a>
-
-<a class="btn secondary" href="download.html">
-Download Now
-</a>
-
-</div>
