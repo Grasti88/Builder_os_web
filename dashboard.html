@@ -6,7 +6,6 @@
 <title>Builder OS Dashboard</title>
 
 <style>
-
 body{
 margin:0;
 font-family:Arial, Helvetica, sans-serif;
@@ -16,15 +15,11 @@ overflow:hidden;
 color:white;
 }
 
-/* Desktop */
-
 .desktop{
 position:relative;
 width:100%;
 height:100%;
 }
-
-/* Desktop icons */
 
 .icon{
 position:absolute;
@@ -36,14 +31,24 @@ cursor:pointer;
 .icon img{
 width:48px;
 height:48px;
+transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.icon:hover img{
+transform: scale(1.2);
+filter: drop-shadow(0 0 8px rgba(255,255,255,0.7));
 }
 
 .icon div{
 margin-top:6px;
+transition: transform 0.2s ease;
+}
+
+.icon:hover div{
+transform: scale(1.1);
 }
 
 /* Windows */
-
 .window{
 position:absolute;
 width:500px;
@@ -69,12 +74,19 @@ border-top-left-radius:12px;
 border-top-right-radius:12px;
 }
 
+.window-controls button{
+background:none;
+border:none;
+font-size:14px;
+cursor:pointer;
+margin-left:6px;
+}
+
 .window-body{
 padding:15px;
 }
 
 /* Taskbar */
-
 .taskbar{
 position:absolute;
 bottom:0;
@@ -88,7 +100,11 @@ backdrop-filter:blur(10px);
 border-top:1px solid rgba(255,255,255,0.1);
 }
 
-/* Start Button */
+#runningApps{
+display:flex;
+gap:6px;
+align-items:center;
+}
 
 .start-btn{
 background:#4f8df7;
@@ -98,8 +114,6 @@ padding:8px 18px;
 border-radius:8px;
 cursor:pointer;
 }
-
-/* Start Menu */
 
 .start-menu{
 position:absolute;
@@ -129,7 +143,6 @@ opacity:.8;
 }
 
 /* Terminal */
-
 .terminal{
 background:black;
 color:#00ff7b;
@@ -140,7 +153,6 @@ overflow:auto;
 }
 
 /* Browser */
-
 .browser-bar{
 margin-bottom:10px;
 }
@@ -159,7 +171,6 @@ width:100%;
 height:240px;
 border:none;
 }
-
 </style>
 </head>
 
@@ -167,31 +178,34 @@ border:none;
 
 <div class="desktop">
 
-<!-- Icons -->
-
+<!-- Files Icon -->
 <div class="icon" style="top:20px;left:20px;" onclick="openWindow('files')">
-<img src="assets/files.png">
+<img src="assets/files.svg">
 <div>Files</div>
 </div>
 
+<!-- Terminal Icon -->
 <div class="icon" style="top:120px;left:20px;" onclick="openWindow('terminal')">
-<img src="assets/terminal.png">
+<img src="assets/terminal.svg">
 <div>Terminal</div>
 </div>
 
+<!-- Browser Icon -->
 <div class="icon" style="top:220px;left:20px;" onclick="openWindow('browser')">
-<img src="assets/browser.png">
+<img src="assets/browser.svg">
 <div>Browser</div>
 </div>
 
-<!-- File Manager -->
-
+<!-- File Manager Window -->
 <div id="files" class="window" style="top:100px;left:200px;">
 <div class="window-header">
 <span>File Manager</span>
-<span onclick="closeWindow('files')">✖</span>
+<div class="window-controls">
+<button onclick="minimizeWindow('files')">🟡</button>
+<button onclick="maximizeWindow('files')">🟢</button>
+<button onclick="closeWindow('files')">🔴</button>
 </div>
-
+</div>
 <div class="window-body">
 <ul>
 <li>Project1</li>
@@ -201,72 +215,58 @@ border:none;
 </div>
 </div>
 
-<!-- Terminal -->
-
+<!-- Terminal Window -->
 <div id="terminal" class="window" style="top:140px;left:240px;">
-
 <div class="window-header">
 <span>Terminal</span>
-<span onclick="closeWindow('terminal')">✖</span>
+<div class="window-controls">
+<button onclick="minimizeWindow('terminal')">🟡</button>
+<button onclick="maximizeWindow('terminal')">🟢</button>
+<button onclick="closeWindow('terminal')">🔴</button>
 </div>
-
+</div>
 <div class="window-body">
-
 <div class="terminal" id="terminalOutput">
 Builder OS Terminal v1.0<br>
 Type commands below...
 </div>
-
 <input id="terminalInput" placeholder="type command..." style="width:100%;margin-top:10px;">
-
 </div>
 </div>
 
-<!-- Browser -->
-
+<!-- Browser Window -->
 <div id="browser" class="window" style="top:180px;left:280px;">
-
 <div class="window-header">
 <span>Browser</span>
-<span onclick="closeWindow('browser')">✖</span>
+<div class="window-controls">
+<button onclick="minimizeWindow('browser')">🟡</button>
+<button onclick="maximizeWindow('browser')">🟢</button>
+<button onclick="closeWindow('browser')">🔴</button>
 </div>
-
+</div>
 <div class="window-body">
-
 <div class="browser-bar">
 <input id="urlInput" placeholder="https://example.com">
 <button onclick="loadSite()">Go</button>
 </div>
-
 <iframe id="browserFrame"></iframe>
-
 </div>
 </div>
 
 <!-- Start Menu -->
-
 <div class="start-menu" id="startMenu">
-
 <div class="start-item" onclick="openWindow('files')">📁 File Manager</div>
-
 <div class="start-item" onclick="openWindow('terminal')">💻 Terminal</div>
-
 <div class="start-item" onclick="openWindow('browser')">🌐 Browser</div>
-
 </div>
 
 <!-- Taskbar -->
-
 <div class="taskbar">
-
-<div style="flex:1"></div>
-
+<div id="runningApps"></div>
 <button class="start-btn" onclick="toggleStart()">Start</button>
-
 <div style="flex:1;text-align:right">
 <span class="clock" id="clock"></span>
 </div>
-
 </div>
 
 </div>
@@ -274,40 +274,77 @@ Type commands below...
 <script>
 
 /* Start Menu */
-
 function toggleStart(){
 const menu=document.getElementById("startMenu");
 menu.style.display=menu.style.display==="block"?"none":"block";
 }
 
-/* Window Control */
+/* Running Apps */
+let runningAppsMap={};
+function addRunningApp(id,label,iconSrc){
+if(runningAppsMap[id]) return;
+const container=document.getElementById("runningApps");
+const btn=document.createElement("button");
+btn.innerHTML=`<img src="${iconSrc}" width="24" height="24" style="vertical-align:middle;"> ${label}`;
+btn.style.background="none";
+btn.style.border="none";
+btn.style.color="white";
+btn.style.cursor="pointer";
+btn.style.fontSize="12px";
+btn.style.display="flex";
+btn.style.alignItems="center";
+btn.onclick=()=>{ toggleWindow(id); };
+container.appendChild(btn);
+runningAppsMap[id]=btn;
+}
+function removeRunningApp(id){
+if(!runningAppsMap[id]) return;
+runningAppsMap[id].remove();
+delete runningAppsMap[id];
+}
+function toggleWindow(id){
+const win=document.getElementById(id);
+if(win.style.display==="none") win.style.display="block";
+else win.style.display="none";
+}
 
+/* Window Control */
 function openWindow(id){
 document.getElementById(id).style.display="block";
+if(id==="files") addRunningApp(id,"Files","assets/files.svg");
+if(id==="terminal") addRunningApp(id,"Terminal","assets/terminal.svg");
+if(id==="browser") addRunningApp(id,"Browser","assets/browser.svg");
 }
 
 function closeWindow(id){
 document.getElementById(id).style.display="none";
+removeRunningApp(id);
 if(id==="browser") document.getElementById("browserFrame").src="";
 }
 
-/* Clock */
+function minimizeWindow(id){ document.getElementById(id).style.display="none"; }
+function maximizeWindow(id){
+const win=document.getElementById(id);
+if(win.classList.contains("maximized")){
+win.style.width="500px"; win.style.height="350px"; win.style.top="150px"; win.style.left="200px";
+win.classList.remove("maximized");
+}else{
+win.style.top="0"; win.style.left="0"; win.style.width="100%"; win.style.height="calc(100% - 48px)";
+win.classList.add("maximized");
+}
+}
 
+/* Clock */
 function updateClock(){
 const now=new Date();
 document.getElementById("clock").innerText=
 now.getHours()+":"+String(now.getMinutes()).padStart(2,'0');
 }
-
 setInterval(updateClock,1000);
 updateClock();
 
-/* Window Dragging */
-
-let drag=null;
-let offsetX=0;
-let offsetY=0;
-
+/* Dragging */
+let drag=null, offsetX=0, offsetY=0;
 document.querySelectorAll(".window-header").forEach(h=>{
 h.addEventListener("mousedown",e=>{
 drag=h.parentElement;
@@ -315,20 +352,12 @@ offsetX=e.clientX-drag.offsetLeft;
 offsetY=e.clientY-drag.offsetTop;
 });
 });
-
 document.addEventListener("mousemove",e=>{
-if(drag){
-drag.style.left=(e.clientX-offsetX)+"px";
-drag.style.top=(e.clientY-offsetY)+"px";
-}
+if(drag){ drag.style.left=(e.clientX-offsetX)+"px"; drag.style.top=(e.clientY-offsetY)+"px"; }
 });
-
-document.addEventListener("mouseup",()=>{
-drag=null;
-});
+document.addEventListener("mouseup",()=>{ drag=null; });
 
 /* Browser */
-
 function loadSite(){
 let url=document.getElementById("urlInput").value;
 if(!url.startsWith("http")) url="https://"+url;
@@ -336,29 +365,17 @@ document.getElementById("browserFrame").src=url;
 }
 
 /* Terminal */
-
 document.getElementById("terminalInput").addEventListener("keypress",function(e){
-
 if(e.key==="Enter"){
-
-let input=this.value;
-let output=document.getElementById("terminalOutput");
-
+let input=this.value; let output=document.getElementById("terminalOutput");
 output.innerHTML+="<br>> "+input;
-
 if(input==="help") output.innerHTML+="<br>Commands: help, clear, about";
-
 else if(input==="about") output.innerHTML+="<br>Builder OS running in browser.";
-
 else if(input==="clear") output.innerHTML="";
-
 else output.innerHTML+="<br>Command not found.";
-
 this.value="";
 output.scrollTop=output.scrollHeight;
-
 }
-
 });
 
 </script>
