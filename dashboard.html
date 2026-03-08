@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Builder OS Dashboard</title>
+
 <style>
 
 body{
@@ -32,6 +33,11 @@ text-align:center;
 cursor:pointer;
 }
 
+.icon img{
+width:48px;
+height:48px;
+}
+
 .icon div{
 margin-top:6px;
 }
@@ -42,10 +48,10 @@ margin-top:6px;
 position:absolute;
 width:500px;
 height:350px;
-background:white;
+background:#ffffff;
 color:black;
-border-radius:8px;
-box-shadow:0 10px 35px rgba(0,0,0,0.5);
+border-radius:12px;
+box-shadow:0 15px 40px rgba(0,0,0,0.4);
 display:none;
 resize:both;
 overflow:auto;
@@ -54,10 +60,13 @@ overflow:auto;
 .window-header{
 background:#1f2d44;
 color:white;
-padding:10px;
+padding:10px 14px;
 display:flex;
 justify-content:space-between;
+align-items:center;
 cursor:move;
+border-top-left-radius:12px;
+border-top-right-radius:12px;
 }
 
 .window-body{
@@ -71,38 +80,44 @@ position:absolute;
 bottom:0;
 width:100%;
 height:48px;
-background:#111;
 display:flex;
 align-items:center;
 padding:0 10px;
+background:rgba(20,20,20,0.7);
+backdrop-filter:blur(10px);
+border-top:1px solid rgba(255,255,255,0.1);
 }
+
+/* Start Button */
 
 .start-btn{
 background:#4f8df7;
 border:none;
 color:white;
-padding:6px 14px;
-border-radius:4px;
+padding:8px 18px;
+border-radius:8px;
 cursor:pointer;
 }
 
-/* Start menu */
+/* Start Menu */
 
 .start-menu{
 position:absolute;
-bottom:50px;
-left:10px;
+bottom:55px;
+left:50%;
+transform:translateX(-50%);
 width:220px;
 background:#202b3a;
-border-radius:6px;
+border-radius:10px;
 padding:10px;
 display:none;
+box-shadow:0 10px 25px rgba(0,0,0,0.4);
 }
 
 .start-item{
 padding:10px;
 cursor:pointer;
-border-radius:4px;
+border-radius:6px;
 }
 
 .start-item:hover{
@@ -110,7 +125,6 @@ background:#2f3f56;
 }
 
 .clock{
-margin-left:auto;
 opacity:.8;
 }
 
@@ -156,17 +170,17 @@ border:none;
 <!-- Icons -->
 
 <div class="icon" style="top:20px;left:20px;" onclick="openWindow('files')">
-📁
+<img src="assets/files.png">
 <div>Files</div>
 </div>
 
 <div class="icon" style="top:120px;left:20px;" onclick="openWindow('terminal')">
-💻
+<img src="assets/terminal.png">
 <div>Terminal</div>
 </div>
 
 <div class="icon" style="top:220px;left:20px;" onclick="openWindow('browser')">
-🌐
+<img src="assets/browser.png">
 <div>Browser</div>
 </div>
 
@@ -177,6 +191,7 @@ border:none;
 <span>File Manager</span>
 <span onclick="closeWindow('files')">✖</span>
 </div>
+
 <div class="window-body">
 <ul>
 <li>Project1</li>
@@ -189,10 +204,12 @@ border:none;
 <!-- Terminal -->
 
 <div id="terminal" class="window" style="top:140px;left:240px;">
+
 <div class="window-header">
 <span>Terminal</span>
 <span onclick="closeWindow('terminal')">✖</span>
 </div>
+
 <div class="window-body">
 
 <div class="terminal" id="terminalOutput">
@@ -208,6 +225,7 @@ Type commands below...
 <!-- Browser -->
 
 <div id="browser" class="window" style="top:180px;left:280px;">
+
 <div class="window-header">
 <span>Browser</span>
 <span onclick="closeWindow('browser')">✖</span>
@@ -230,7 +248,9 @@ Type commands below...
 <div class="start-menu" id="startMenu">
 
 <div class="start-item" onclick="openWindow('files')">📁 File Manager</div>
+
 <div class="start-item" onclick="openWindow('terminal')">💻 Terminal</div>
+
 <div class="start-item" onclick="openWindow('browser')">🌐 Browser</div>
 
 </div>
@@ -239,8 +259,13 @@ Type commands below...
 
 <div class="taskbar">
 
+<div style="flex:1"></div>
+
 <button class="start-btn" onclick="toggleStart()">Start</button>
-<div class="clock" id="clock"></div>
+
+<div style="flex:1;text-align:right">
+<span class="clock" id="clock"></span>
+</div>
 
 </div>
 
@@ -248,14 +273,14 @@ Type commands below...
 
 <script>
 
-/* Start menu */
+/* Start Menu */
 
 function toggleStart(){
 const menu=document.getElementById("startMenu");
 menu.style.display=menu.style.display==="block"?"none":"block";
 }
 
-/* Window control */
+/* Window Control */
 
 function openWindow(id){
 document.getElementById(id).style.display="block";
@@ -277,7 +302,7 @@ now.getHours()+":"+String(now.getMinutes()).padStart(2,'0');
 setInterval(updateClock,1000);
 updateClock();
 
-/* Dragging */
+/* Window Dragging */
 
 let drag=null;
 let offsetX=0;
@@ -323,7 +348,7 @@ output.innerHTML+="<br>> "+input;
 
 if(input==="help") output.innerHTML+="<br>Commands: help, clear, about";
 
-else if(input==="about") output.innerHTML+="<br>Builder OS V3 running in browser.";
+else if(input==="about") output.innerHTML+="<br>Builder OS running in browser.";
 
 else if(input==="clear") output.innerHTML="";
 
@@ -339,157 +364,4 @@ output.scrollTop=output.scrollHeight;
 </script>
 
 </body>
-</html>.card{
-background:white;
-padding:25px;
-border-radius:10px;
-box-shadow:0 5px 15px rgba(0,0,0,0.06);
-}
-
-.card h3{
-margin-top:0;
-}
-
-.button{
-display:inline-block;
-margin-top:15px;
-padding:10px 20px;
-background:#4f8df7;
-color:white;
-border-radius:6px;
-text-decoration:none;
-font-weight:600;
-}
-
-.stats{
-display:flex;
-gap:30px;
-margin-bottom:40px;
-flex-wrap:wrap;
-}
-
-.stat{
-background:white;
-padding:20px;
-border-radius:10px;
-flex:1;
-min-width:200px;
-box-shadow:0 5px 15px rgba(0,0,0,0.05);
-}
-
-.stat h2{
-margin:0;
-font-size:28px;
-color:#4f8df7;
-}
-
-.stat p{
-margin:5px 0 0;
-opacity:.7;
-}
-
-</style>
-</head>
-
-<body>
-
-<div class="topbar">
-Builder OS Dashboard
-</div>
-
-<div class="container">
-
-<div class="stats">
-
-<div class="stat">
-<h2>12</h2>
-<p>Active Projects</p>
-</div>
-
-<div class="stat">
-<h2>5</h2>
-<p>Automations Running</p>
-</div>
-
-<div class="stat">
-<h2>24</h2>
-<p>Extensions Installed</p>
-</div>
-
-</div>
-
-<div class="grid">
-
-<div class="card">
-<h3>Automation Manager</h3>
-<p>Create and manage automated workflows.</p>
-<a class="button" href="#">Open</a>
-</div>
-
-<div class="card">
-<h3>Extension Store</h3>
-<p>Install additional tools and features.</p>
-<a class="button" href="#">Browse</a>
-</div>
-
-<div class="card">
-<h3>Project Manager</h3>
-<p>Organize and track your Builder OS projects.</p>
-<a class="button" href="#">View Projects</a>
-</div>
-
-<div class="card">
-<h3>System Settings</h3>
-<p>Configure your Builder OS environment.</p>
-<a class="button" href="#">Open Settings</a>
-</div>
-
-</div>
-
-</div>
-
-</body>
-</html>    </div>
-  </section>
-</main>
-
-</body>
-</html>.feature-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 12px rgba(0,0,0,0.2);
-}
-</style>
-</head>
-<body>
-
-<header class="hero">
-  <h1>Builder OS Dashboard</h1>
-  <img src="assets/dashboard.png" alt="Dashboard Screenshot">
-</header>
-
-<nav style="text-align:center; margin:20px 0;">
-  <a href="index.html">Home</a> |
-  <a href="dashboard.html">Dashboard</a> |
-  <a href="download.html">Download</a> |
-  <a href="docs/docpage.html">Docs</a>
-</nav>
-
-<main>
-  <section class="features">
-    <div class="feature-card">
-      <h3>Project Overview</h3>
-      <p>Track all your active projects at a glance.</p>
-    </div>
-    <div class="feature-card">
-      <h3>Analytics</h3>
-      <p>Monitor workflow and performance metrics.</p>
-    </div>
-    <div class="feature-card">
-      <h3>Notifications</h3>
-      <p>Stay up-to-date with project updates and alerts.</p>
-    </div>
-  </section>
-</main>
-
-</body>
-</html>
+  </html>
