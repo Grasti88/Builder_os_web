@@ -5,25 +5,61 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Builder OS Documentation</title>
 <link rel="stylesheet" href="../assets/style.css">
+<style>
+.hero {
+  background: linear-gradient(135deg, #3b82f6, #06b6d4);
+  color: #fff;
+  padding: 60px 20px;
+  text-align: center;
+  border-radius: 0 0 20px 20px;
+}
+
+.hero h1 { font-size: 2.5em; margin-bottom: 10px; }
+
+.doc-section {
+  max-width: 900px;
+  margin: 40px auto;
+}
+
+.doc-card {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  margin-bottom: 20px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.doc-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 12px rgba(0,0,0,0.2);
+}
+</style>
 </head>
 <body>
-<header>
+
+<header class="hero">
   <h1>Builder OS Documentation</h1>
 </header>
-<nav>
+
+<nav style="text-align:center; margin:20px 0;">
   <a href="../index.html">Home</a> |
   <a href="../dashboard.html">Dashboard</a> |
   <a href="../download.html">Download</a>
 </nav>
+
 <main>
-  <section style="margin:40px auto; max-width:900px;">
-    <h2>Getting Started</h2>
-    <p>Welcome to Builder OS docs! Add your guides, tutorials, and screenshots here.</p>
-    <div style="background:#fff; padding:20px; border-radius:10px; box-shadow:0 4px 6px rgba(0,0,0,0.1); margin-top:20px;">
+  <section class="doc-section">
+    <div class="doc-card">
+      <h3>Getting Started</h3>
+      <p>Welcome to Builder OS docs! Add your guides, tutorials, and screenshots here.</p>
+    </div>
+    <div class="doc-card">
       <h3>Example Guide</h3>
-      <p>This is a placeholder for your first guide. You can include images, steps, and tips here.</p>
+      <p>This is a placeholder for your first guide. Include images, steps, and tips here.</p>
     </div>
   </section>
 </main>
+
 </body>
 </html>
