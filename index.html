@@ -5,36 +5,52 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Builder OS Home</title>
 <link rel="stylesheet" href="assets/style.css">
-<style>
-/* Extra homepage styling */
-.hero {
-  background: linear-gradient(135deg, #3b82f6, #06b6d4);
-  color: #fff;
-  padding: 80px 20px;
-  text-align: center;
-  border-radius: 0 0 20px 20px;
-}
+<script src="assets/main.js" defer></script>
+</head>
+<body>
 
-.hero h1 { font-size: 3em; margin-bottom: 10px; }
-.hero p { font-size: 1.2em; margin-bottom: 30px; }
-.hero button { margin: 0 10px; }
+<header class="hero">
+  <img src="assets/logo.png" alt="Builder OS Logo" style="max-width:150px; margin-bottom:20px;">
+  <h1>Welcome to Builder OS</h1>
+  <p>Streamline your workflow with Builder OS tools</p>
+  <div>
+    <a href="dashboard.html"><button>Go to Dashboard</button></a>
+    <a href="download.html"><button>Download Now</button></a>
+  </div>
+</header>
 
-.features {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-  margin: 40px 0;
-}
+<nav style="text-align:center; margin:20px 0;">
+  <a href="index.html">Home</a> |
+  <a href="dashboard.html">Dashboard</a> |
+  <a href="download.html">Download</a> |
+  <a href="docs/docpage.html">Docs</a>
+</nav>
 
-.feature-card {
-  background: #fff;
-  padding: 20px;
-  border-radius: 10px;
-  width: 250px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-  transition: transform 0.3s, box-shadow 0.3s;
-}
+<main>
+  <section class="features">
+    <div class="feature-card">
+      <img src="assets/automation.png" alt="Automation">
+      <h3>Automation</h3>
+      <p>Automate tasks and workflows with ease.</p>
+      <button>Learn More</button>
+    </div>
+    <div class="feature-card">
+      <img src="assets/dashboard.png" alt="Dashboard">
+      <h3>Dashboard</h3>
+      <p>Monitor all your projects from one place.</p>
+      <button>View Dashboard</button>
+    </div>
+    <div class="feature-card">
+      <img src="assets/extension.png" alt="Extension">
+      <h3>Extensions</h3>
+      <p>Enhance functionality with additional tools.</p>
+      <button>Explore</button>
+    </div>
+  </section>
+</main>
+
+</body>
+</html>}
 
 .feature-card:hover {
   transform: translateY(-5px);
