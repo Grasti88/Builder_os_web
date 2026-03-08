@@ -4,37 +4,147 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Builder OS Dashboard</title>
-<link rel="stylesheet" href="assets/style.css">
-<script src="assets/main.js" defer></script>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial, Helvetica, sans-serif;
+background:#f5f7fb;
+color:#333;
+}
+
+.topbar{
+background:#1f2d44;
+color:white;
+padding:18px 30px;
+font-size:20px;
+font-weight:bold;
+}
+
+.container{
+max-width:1200px;
+margin:auto;
+padding:40px 20px;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+}
+
+.card{
+background:white;
+padding:25px;
+border-radius:10px;
+box-shadow:0 5px 15px rgba(0,0,0,0.06);
+}
+
+.card h3{
+margin-top:0;
+}
+
+.button{
+display:inline-block;
+margin-top:15px;
+padding:10px 20px;
+background:#4f8df7;
+color:white;
+border-radius:6px;
+text-decoration:none;
+font-weight:600;
+}
+
+.stats{
+display:flex;
+gap:30px;
+margin-bottom:40px;
+flex-wrap:wrap;
+}
+
+.stat{
+background:white;
+padding:20px;
+border-radius:10px;
+flex:1;
+min-width:200px;
+box-shadow:0 5px 15px rgba(0,0,0,0.05);
+}
+
+.stat h2{
+margin:0;
+font-size:28px;
+color:#4f8df7;
+}
+
+.stat p{
+margin:5px 0 0;
+opacity:.7;
+}
+
+</style>
 </head>
+
 <body>
 
-<header class="hero">
-  <h1>Builder OS Dashboard</h1>
-  <img src="assets/dashboard.png" alt="Dashboard Screenshot" style="max-width:300px; margin-top:20px;">
-</header>
+<div class="topbar">
+Builder OS Dashboard
+</div>
 
-<nav style="text-align:center; margin:20px 0;">
-  <a href="index.html">Home</a> |
-  <a href="dashboard.html">Dashboard</a> |
-  <a href="download.html">Download</a> |
-  <a href="docs/docpage.html">Docs</a>
-</nav>
+<div class="container">
 
-<main>
-  <section class="features">
-    <div class="feature-card">
-      <h3>Project Overview</h3>
-      <p>Track all your active projects at a glance.</p>
-    </div>
-    <div class="feature-card">
-      <h3>Analytics</h3>
-      <p>Monitor workflow and performance metrics.</p>
-    </div>
-    <div class="feature-card">
-      <h3>Notifications</h3>
-      <p>Stay up-to-date with project updates and alerts.</p>
-    </div>
+<div class="stats">
+
+<div class="stat">
+<h2>12</h2>
+<p>Active Projects</p>
+</div>
+
+<div class="stat">
+<h2>5</h2>
+<p>Automations Running</p>
+</div>
+
+<div class="stat">
+<h2>24</h2>
+<p>Extensions Installed</p>
+</div>
+
+</div>
+
+<div class="grid">
+
+<div class="card">
+<h3>Automation Manager</h3>
+<p>Create and manage automated workflows.</p>
+<a class="button" href="#">Open</a>
+</div>
+
+<div class="card">
+<h3>Extension Store</h3>
+<p>Install additional tools and features.</p>
+<a class="button" href="#">Browse</a>
+</div>
+
+<div class="card">
+<h3>Project Manager</h3>
+<p>Organize and track your Builder OS projects.</p>
+<a class="button" href="#">View Projects</a>
+</div>
+
+<div class="card">
+<h3>System Settings</h3>
+<p>Configure your Builder OS environment.</p>
+<a class="button" href="#">Open Settings</a>
+</div>
+
+</div>
+
+</div>
+
+</body>
+</html>    </div>
   </section>
 </main>
 
