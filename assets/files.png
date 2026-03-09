@@ -1,4 +1,4 @@
 <div class="icon" style="top:20px;left:20px;" onclick="openWindow('files')">
-  <img src="../assets/files.png" width="48" height="48">
+  <img src="assets/files.png" width="48" height="48">
   <div>Files</div>
 </div>
