@@ -1,4 +1,4 @@
-<div class="icon" style="top:20px;left:20px;background:#2f3f56;padding:10px;border-radius:8px;" onclick="openWindow('files')">
-  <div style="font-size:32px;">📁</div>
+<div class="icon" style="top:20px;left:20px;" onclick="openWindow('files')">
+  <img src="assets/files.png">
   <div>Files</div>
 </div>
